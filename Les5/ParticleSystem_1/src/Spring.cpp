@@ -1,8 +1,8 @@
 #include "Spring.h"
 
-Spring::Spring(Particle* first, Particle* second) {
-	this->first = first;
-	this->second = second;
+Spring::Spring(Particle* firstParticle, Particle* secondParticle) {
+	first = firstParticle;
+	second = secondParticle;
 }
 
 void Spring::draw() {
@@ -14,7 +14,7 @@ void Spring::update() {
 	float distance = first->position.distance(second->position);
 	ofVec3f direction = second->position - first->position;
 	direction.normalize(); // terug brengt tot de lengte maar 1 is
-	direction *= (distance - length) / 100;
+	direction *= (distance - 100) / 100;  //(distance - length)/ length; weggehaald
 	first->speed += direction;
 	second->speed -= direction;
 }
